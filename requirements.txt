@@ -6,3 +6,5 @@ python-dotenv
 pydantic
 duckduckgo-search
 dotenv
+flask
+flask-cors
