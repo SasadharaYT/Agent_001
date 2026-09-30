@@ -1,4 +1,5 @@
 import warnings
+import logging
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 from flask_cors import CORS
@@ -17,6 +18,7 @@ llm = ChatGoogleGenerativeAI(
 )
 
 app = Flask(__name__)
+app.logger.setLevel(logging.INFO)
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
@@ -26,19 +28,46 @@ def chat():
     message = data.get("message")
 
     if not isinstance(message, str) or not message.strip():
-        return jsonify({"error": "A non-empty 'message' is required."}), 400
+        return jsonify({
+            "error": "A non-empty 'message' is required."
+        }), 400
 
     try:
-        # Temporarily bypass Gemini to test frontend-to-API connectivity.
-        # response = llm.invoke(message)
-        # return jsonify({"response": response.content})
+        response = llm.invoke(message)
+
+        content = response.content
+
+        # Gemini response can sometimes be a string,
+        # or a list of content blocks.
+        if isinstance(content, str):
+            reply = content
+
+        elif isinstance(content, list):
+            reply = "".join(
+                block.get("text", "")
+                for block in content
+                if isinstance(block, dict)
+                and block.get("type") == "text"
+            )
+
+        else:
+            reply = str(content)
+
+        app.logger.info("Gemini reply: %s", reply)
+
         return jsonify({
-            "response": "API connection is working.",
+            "response": reply,
             "received_message": message,
             "connected": True,
+            "service": "gemini",
         })
+
     except Exception as error:
-        return jsonify({"error": str(error)}), 500
+        app.logger.exception("Gemini request failed")
+
+        return jsonify({
+            "error": str(error)
+        }), 500
 
 
 if __name__ == "__main__":
