@@ -1,0 +1,571 @@
+/* Design tokens and shared primitives */
+:root{
+  color-scheme:light;
+  --canvas:#f8f9f5;
+  --sidebar:#eff1ea;
+  --ink:#27372f;
+  --muted:#737b72;
+  --line:#dfe4da;
+  --green:#284f3b;
+  --white:#fff;
+  font-family:Arial,Helvetica,sans-serif;
+  font-synthesis:none}
+  *{
+    box-sizing:border-box}
+    body{
+      margin:0;
+      background:var(--canvas);
+      color:var(--ink);
+      font-size:14px;
+      line-height:1.5}
+      button,textarea{
+        font:inherit}
+        button{
+          cursor:pointer}
+          button,a,textarea{
+            -webkit-tap-highlight-color:transparent}
+            button{
+              color:inherit}
+              button:focus-visible,a:focus-visible{
+                outline:3px solid #6c987b;
+                outline-offset:4px}
+                [hidden]{
+                  display:none!important}
+                  .sr-only{
+                    position:absolute;
+                    width:1px;
+                    height:1px;
+                    overflow:hidden;
+                    clip-path:inset(50%);
+                    white-space:nowrap}
+                    button{
+                      transition:background .18s,transform .18s,border-color .18s}
+                      /* Workspace shell */
+body{
+                        display:grid;
+                        grid-template-columns:252px minmax(0,1fr);
+                        height:100dvh;
+                        overflow:hidden}
+                        .sidebar{
+                          display:flex;
+                          flex-direction:column;
+                          padding:32px 22px 20px;
+                          background:var(--sidebar);
+                          border-right:1px solid var(--line);
+                          min-height:0}
+                          .brand{
+                            display:flex;
+                            align-items:center;
+                            gap:10px;
+                            text-decoration:none;
+                            color:var(--ink);
+                            font-size:30px;
+                            font-weight:700;
+                            letter-spacing:-1.6px;
+                            margin:0 10px 38px}
+                            .brand-mark{
+                              display:grid;
+                              place-items:center;
+                              background:var(--green);
+                              color:#fff;
+                              width:35px;
+                              height:35px;
+                              border-radius:10px;
+                              font-family:Georgia,serif;
+                              font-style:italic;
+                              font-size:31px;
+                              padding-right:4px}
+                              .brand-dot{
+                                font-size:11px;
+                                align-self:flex-start;
+                                letter-spacing:0;
+                                margin:6px 0 0 -5px}
+                                .new-chat{
+                                  display:flex;
+                                  gap:10px;
+                                  align-items:center;
+                                  width:100%;
+                                  padding:12px;
+                                  background:var(--green);
+                                  color:#fff;
+                                  border:1px solid var(--green);
+                                  border-radius:9px;
+                                  font-size:12px}
+                                  .new-chat:hover{
+                                    background:#386549}
+                                    .new-chat>span:first-child{
+                                      font-size:21px;
+                                      line-height:1}
+                                      .shortcut{
+                                        margin-left:auto;
+                                        opacity:.6}
+                                        .sidebar-section{
+                                          margin-top:33px}
+                                          .eyebrow{
+                                            font-size:10px;
+                                            font-weight:600;
+                                            letter-spacing:1.5px;
+                                            color:var(--muted)}
+                                            .sidebar-section>.eyebrow{
+                                              padding-left:12px}
+                                              .active-nav{
+                                                display:flex;
+                                                align-items:center;
+                                                gap:10px;
+                                                background:#e2e8dc;
+                                                padding:11px 12px;
+                                                border-radius:7px;
+                                                margin-top:12px;
+                                                font-size:12px;
+                                                font-weight:600}
+                                                .active-nav>span:first-child{
+                                                  font-size:19px}
+                                                  .nav-dot{
+                                                    width:5px;
+                                                    height:5px;
+                                                    background:#50745a;
+                                                    border-radius:50%;
+                                                    margin-left:auto}
+                                                    .history-empty{
+                                                      font-size:12px;
+                                                      color:var(--muted);
+                                                      padding:0 12px;
+                                                      max-width:170px;
+                                                      line-height:1.8}
+                                                      .conversation-link{
+                                                        margin-top:12px;
+                                                        padding:10px 12px;
+                                                        border:0;
+                                                        background:transparent;
+                                                        text-align:left;
+                                                        width:100%;
+                                                        overflow:hidden;
+                                                        white-space:nowrap;
+                                                        text-overflow:ellipsis;
+                                                        font-size:12px}
+                                                        .conversation-link:hover{
+                                                          background:#e2e8dc;
+                                                          border-radius:7px}
+                                                          .sidebar-bottom{
+                                                            margin-top:auto;
+                                                            padding-top:25px}
+                                                            .tip{
+                                                              padding:17px 15px;
+                                                              border:1px solid #d8dfd1;
+                                                              border-radius:10px;
+                                                              background:#e9ede2}
+                                                              .tip-icon{
+                                                                display:block;
+                                                                font-size:25px;
+                                                                color:#53704e;
+                                                                margin-bottom:8px}
+                                                                .tip strong{
+                                                                  font-weight:500;
+                                                                  font-size:14px;
+                                                                  line-height:1.55}
+                                                                  .tip p{
+                                                                    font-size:11px;
+                                                                    color:#6b7565;
+                                                                    line-height:1.7;
+                                                                    margin-bottom:0}
+                                                                    .profile{
+                                                                      display:flex;
+                                                                      gap:10px;
+                                                                      align-items:center;
+                                                                      border-top:1px solid var(--line);
+                                                                      margin-top:22px;
+                                                                      padding:20px 2px 0}
+                                                                      .profile-avatar{
+                                                                        display:grid;
+                                                                        place-items:center;
+                                                                        width:33px;
+                                                                        height:33px;
+                                                                        background:#e0e4d7;
+                                                                        border:1px solid #d4dbcb;
+                                                                        border-radius:50%;
+                                                                        font-size:12px}
+                                                                        .profile strong,.profile div>span{
+                                                                          display:block;
+                                                                          font-size:11px}
+                                                                          .profile div>span{
+                                                                            color:var(--muted);
+                                                                            font-size:10px;
+                                                                            margin-top:2px}
+                                                                            .profile-decoration{
+                                                                              margin-left:auto;
+                                                                              color:var(--muted)}
+                                                                              .workspace{
+                                                                                min-width:0;
+                                                                                display:flex;
+                                                                                flex-direction:column;
+                                                                                height:100dvh}
+                                                                                .topbar{
+                                                                                  height:78px;
+                                                                                  flex-shrink:0;
+                                                                                  display:flex;
+                                                                                  align-items:center;
+                                                                                  justify-content:space-between;
+                                                                                  padding:0 42px;
+                                                                                  border-bottom:1px solid #e8ebe3}
+                                                                                  .breadcrumb{
+                                                                                    display:flex;
+                                                                                    gap:14px;
+                                                                                    font-size:12px;
+                                                                                    color:var(--muted)}
+                                                                                    .breadcrumb strong{
+                                                                                      font-weight:500;
+                                                                                      color:var(--ink)}
+                                                                                      .breadcrumb>span{
+                                                                                        color:#b6bdb0}
+                                                                                        .workspace-badge{
+                                                                                          display:flex;
+                                                                                          align-items:center;
+                                                                                          gap:7px;
+                                                                                          font-size:10px;
+                                                                                          border:1px solid var(--line);
+                                                                                          border-radius:20px;
+                                                                                          padding:5px 10px;
+                                                                                          color:#677361}
+                                                                                          .workspace-badge>span{
+                                                                                            height:5px;
+                                                                                            width:5px;
+                                                                                            background:#68885a;
+                                                                                            border-radius:50%}
+                                                                                            .mobile-new{
+                                                                                              display:none}
+                                                                                              .chat-scroll{
+                                                                                                flex:1;
+                                                                                                min-height:0;
+                                                                                                overflow-y:auto;
+                                                                                                scroll-behavior:smooth;
+                                                                                                padding:20px 36px}
+                                                                                                .welcome{
+                                                                                                  max-width:790px;
+                                                                                                  margin:auto;
+                                                                                                  text-align:center;
+                                                                                                  padding:clamp(24px,6vh,75px) 0 28px}
+                                                                                                  .welcome-symbol{
+                                                                                                    display:grid;
+                                                                                                    place-items:center;
+                                                                                                    width:64px;
+                                                                                                    height:64px;
+                                                                                                    background:#e9eedf;
+                                                                                                    border:1px solid #dee6d2;
+                                                                                                    color:#577448;
+                                                                                                    font-size:46px;
+                                                                                                    border-radius:20px;
+                                                                                                    margin:0 auto 25px;
+                                                                                                    transform:rotate(-7deg)}
+                                                                                                    .greeting{
+                                                                                                      font-size:9px;
+                                                                                                      letter-spacing:2px;
+                                                                                                      margin-bottom:17px}
+                                                                                                      h1{
+                                                                                                        font-family:Georgia,'Times New Roman',serif;
+                                                                                                        font-size:clamp(36px,4vw,58px);
+                                                                                                        line-height:1.13;
+                                                                                                        letter-spacing:-2px;
+                                                                                                        font-weight:400;
+                                                                                                        margin:0}
+                                                                                                        h1 em{
+                                                                                                          font-weight:400;
+                                                                                                          color:#6a7f57}
+                                                                                                          .welcome-description{
+                                                                                                            font-size:13px;
+                                                                                                            color:var(--muted);
+                                                                                                            line-height:1.9;
+                                                                                                            margin:21px 0 33px}
+                                                                                                            .suggestions{
+                                                                                                              display:grid;
+                                                                                                              grid-template-columns:repeat(3,minmax(0,1fr));
+                                                                                                              gap:12px;
+                                                                                                              text-align:left}
+                                                                                                              .suggestion{
+                                                                                                                position:relative;
+                                                                                                                display:flex;
+                                                                                                                flex-direction:column;
+                                                                                                                align-items:flex-start;
+                                                                                                                border:1px solid var(--line);
+                                                                                                                border-radius:12px;
+                                                                                                                background:#fcfdf9;
+                                                                                                                padding:18px;
+                                                                                                                text-align:left;
+                                                                                                                min-height:148px}
+                                                                                                                .suggestion:hover{
+                                                                                                                  border-color:#94aa86;
+                                                                                                                  background:#fff;
+                                                                                                                  transform:translateY(-3px)}
+                                                                                                                  .card-icon{
+                                                                                                                    display:grid;
+                                                                                                                    place-items:center;
+                                                                                                                    height:32px;
+                                                                                                                    width:32px;
+                                                                                                                    font-size:22px;
+                                                                                                                    border-radius:9px;
+                                                                                                                    margin-bottom:17px}
+                                                                                                                    .peach{
+                                                                                                                      background:#f5e7da;
+                                                                                                                      color:#99684b}
+                                                                                                                      .lavender{
+                                                                                                                        background:#eae7f2;
+                                                                                                                        color:#77668c}
+                                                                                                                        .sage{
+                                                                                                                          background:#e5ebdc;
+                                                                                                                          color:#63804d}
+                                                                                                                          .suggestion strong{
+                                                                                                                            font-size:12px;
+                                                                                                                            font-weight:600}
+                                                                                                                            .suggestion>span:not(.card-icon):not(.card-arrow){
+                                                                                                                              font-size:11px;
+                                                                                                                              color:var(--muted);
+                                                                                                                              margin-top:4px}
+                                                                                                                              .card-arrow{
+                                                                                                                                position:absolute;
+                                                                                                                                top:21px;
+                                                                                                                                right:17px;
+                                                                                                                                color:#9aa38f;
+                                                                                                                                font-size:16px}
+                                                                                                                                /* Composer and conversation */
+.composer-area{
+                                                                                                                                  padding:16px 36px 18px;
+                                                                                                                                  width:100%;
+                                                                                                                                  max-width:870px;
+                                                                                                                                  margin:0 auto}
+                                                                                                                                  .chat-form{
+                                                                                                                                    background:#fff;
+                                                                                                                                    border:1px solid #d4dccd;
+                                                                                                                                    border-radius:15px;
+                                                                                                                                    padding:18px 18px 12px;
+                                                                                                                                    box-shadow:0 5px 20px #2c462609}
+                                                                                                                                    .chat-form:focus-within{
+                                                                                                                                      border-color:#86a07a;
+                                                                                                                                      box-shadow:0 0 0 3px #dae5d559}
+                                                                                                                                      textarea{
+                                                                                                                                        display:block;
+                                                                                                                                        width:100%;
+                                                                                                                                        resize:none;
+                                                                                                                                        min-height:51px;
+                                                                                                                                        max-height:170px;
+                                                                                                                                        padding:0;
+                                                                                                                                        border:0;
+                                                                                                                                        background:transparent;
+                                                                                                                                        outline:none;
+                                                                                                                                        color:var(--ink);
+                                                                                                                                        font-size:14px;
+                                                                                                                                        line-height:1.65}
+                                                                                                                                        textarea::placeholder{
+                                                                                                                                          color:#92998b}
+                                                                                                                                          .composer-bottom,.send-controls{
+                                                                                                                                            display:flex;
+                                                                                                                                            align-items:center;
+                                                                                                                                            justify-content:space-between;
+                                                                                                                                            gap:12px}
+                                                                                                                                            .composer-label{
+                                                                                                                                              font-size:10px;
+                                                                                                                                              color:#718067;
+                                                                                                                                              display:flex;
+                                                                                                                                              align-items:center;
+                                                                                                                                              gap:6px}
+                                                                                                                                              .composer-label>span{
+                                                                                                                                                font-size:19px}
+                                                                                                                                                .keyboard-hint{
+                                                                                                                                                  font-size:10px;
+                                                                                                                                                  color:#959c8f}
+                                                                                                                                                  .send-button{
+                                                                                                                                                    display:grid;
+                                                                                                                                                    place-items:center;
+                                                                                                                                                    width:34px;
+                                                                                                                                                    height:34px;
+                                                                                                                                                    border:0;
+                                                                                                                                                    border-radius:9px;
+                                                                                                                                                    background:var(--green);
+                                                                                                                                                    color:#fff;
+                                                                                                                                                    font-size:23px}
+                                                                                                                                                    .send-button:hover:enabled{
+                                                                                                                                                      background:#417150}
+                                                                                                                                                      .send-button:disabled{
+                                                                                                                                                        cursor:default;
+                                                                                                                                                        background:#e4e9df;
+                                                                                                                                                        color:#9ca792}
+                                                                                                                                                        .composer-note{
+                                                                                                                                                          margin:12px 0 0;
+                                                                                                                                                          text-align:center;
+                                                                                                                                                          font-size:10px;
+                                                                                                                                                          color:#92998b}
+                                                                                                                                                          .chat-messages{
+                                                                                                                                                            max-width:790px;
+                                                                                                                                                            margin:25px auto}
+                                                                                                                                                            .message{
+                                                                                                                                                              padding:21px 0;
+                                                                                                                                                              border-bottom:1px solid var(--line);
+                                                                                                                                                              animation:appear .2s ease}
+                                                                                                                                                              .message-label{
+                                                                                                                                                                display:flex;
+                                                                                                                                                                align-items:center;
+                                                                                                                                                                gap:9px;
+                                                                                                                                                                font-size:12px;
+                                                                                                                                                                font-weight:600}
+                                                                                                                                                                .message-label::before{
+                                                                                                                                                                  content:'✳';
+                                                                                                                                                                  display:grid;
+                                                                                                                                                                  place-items:center;
+                                                                                                                                                                  width:28px;
+                                                                                                                                                                  height:28px;
+                                                                                                                                                                  border-radius:8px;
+                                                                                                                                                                  background:#e4ebdc;
+                                                                                                                                                                  color:#5d754d;
+                                                                                                                                                                  font-size:19px}
+                                                                                                                                                                  .message-user .message-label::before{
+                                                                                                                                                                    content:'Y';
+                                                                                                                                                                    background:#ecece4;
+                                                                                                                                                                    font-size:12px}
+                                                                                                                                                                    .message-text{
+                                                                                                                                                                      margin:12px 0 0 37px;
+                                                                                                                                                                      line-height:1.8;
+                                                                                                                                                                      font-size:14px;
+                                                                                                                                                                      white-space:pre-wrap;
+                                                                                                                                                                      overflow-wrap:anywhere}
+                                                                                                                                                                      .message.pending .message-text{
+                                                                                                                                                                        color:var(--muted)}
+                                                                                                                                                                        .message.error .message-text{
+                                                                                                                                                                          color:#976243}
+                                                                                                                                                                          .retry-button{
+                                                                                                                                                                            margin:12px 0 0 37px;
+                                                                                                                                                                            background:#fff;
+                                                                                                                                                                            border:1px solid var(--line);
+                                                                                                                                                                            border-radius:6px;
+                                                                                                                                                                            padding:6px 13px;
+                                                                                                                                                                            font-size:12px}
+                                                                                                                                                                            .retry-button:disabled{
+                                                                                                                                                                              opacity:.5;
+                                                                                                                                                                              cursor:default}
+                                                                                                                                                                              @keyframes appear{
+                                                                                                                                                                                from{
+                                                                                                                                                                                  opacity:0;
+                                                                                                                                                                                  transform:translateY(5px)}
+                                                                                                                                                                                  to{
+                                                                                                                                                                                    opacity:1;
+                                                                                                                                                                                    transform:translateY(0)}
+                                                                                                                                                                                  }
+                                                                                                                                                                                  @media(min-width:1500px){
+                                                                                                                                                                                    .welcome{
+                                                                                                                                                                                      padding-top:9vh}
+                                                                                                                                                                                      .suggestions{
+                                                                                                                                                                                        margin-top:45px}
+                                                                                                                                                                                      }
+                                                                                                                                                                                      @media(max-width:1050px){
+                                                                                                                                                                                        body{
+                                                                                                                                                                                          grid-template-columns:210px minmax(0,1fr)}
+                                                                                                                                                                                          .sidebar{
+                                                                                                                                                                                            padding:25px 15px}
+                                                                                                                                                                                            .topbar{
+                                                                                                                                                                                              padding:0 25px}
+                                                                                                                                                                                              .chat-scroll{
+                                                                                                                                                                                                padding:12px 24px}
+                                                                                                                                                                                                .composer-area{
+                                                                                                                                                                                                  padding-left:24px;
+                                                                                                                                                                                                  padding-right:24px}
+                                                                                                                                                                                                  .suggestion{
+                                                                                                                                                                                                    padding:14px}
+                                                                                                                                                                                                    .suggestion strong{
+                                                                                                                                                                                                      font-size:11px}
+                                                                                                                                                                                                      .card-arrow{
+                                                                                                                                                                                                        right:12px}
+                                                                                                                                                                                                        .welcome{
+                                                                                                                                                                                                          padding-top:35px}
+                                                                                                                                                                                                          h1{
+                                                                                                                                                                                                            font-size:44px}
+                                                                                                                                                                                                          }
+                                                                                                                                                                                                          @media(max-width:760px){
+                                                                                                                                                                                                            body{
+                                                                                                                                                                                                              display:block}
+                                                                                                                                                                                                              .sidebar{
+                                                                                                                                                                                                                display:none}
+                                                                                                                                                                                                                .topbar{
+                                                                                                                                                                                                                  height:61px;
+                                                                                                                                                                                                                  padding:0 20px}
+                                                                                                                                                                                                                  .workspace-badge{
+                                                                                                                                                                                                                    margin-left:auto;
+                                                                                                                                                                                                                    margin-right:12px;
+                                                                                                                                                                                                                    font-size:9px}
+                                                                                                                                                                                                                    .mobile-new{
+                                                                                                                                                                                                                      display:block;
+                                                                                                                                                                                                                      background:transparent;
+                                                                                                                                                                                                                      border:1px solid var(--line);
+                                                                                                                                                                                                                      border-radius:7px;
+                                                                                                                                                                                                                      width:30px;
+                                                                                                                                                                                                                      height:30px;
+                                                                                                                                                                                                                      font-size:20px}
+                                                                                                                                                                                                                      .breadcrumb{
+                                                                                                                                                                                                                        gap:8px;
+                                                                                                                                                                                                                        font-size:11px}
+                                                                                                                                                                                                                        .chat-scroll{
+                                                                                                                                                                                                                          padding:10px 20px}
+                                                                                                                                                                                                                          .welcome{
+                                                                                                                                                                                                                            padding-top:30px}
+                                                                                                                                                                                                                            .welcome-symbol{
+                                                                                                                                                                                                                              width:52px;
+                                                                                                                                                                                                                              height:52px;
+                                                                                                                                                                                                                              font-size:38px;
+                                                                                                                                                                                                                              margin-bottom:22px}
+                                                                                                                                                                                                                              h1{
+                                                                                                                                                                                                                                font-size:42px}
+                                                                                                                                                                                                                                .welcome-description{
+                                                                                                                                                                                                                                  font-size:12px}
+                                                                                                                                                                                                                                  .suggestions{
+                                                                                                                                                                                                                                    gap:8px}
+                                                                                                                                                                                                                                    .suggestion{
+                                                                                                                                                                                                                                      padding:12px;
+                                                                                                                                                                                                                                      min-height:140px}
+                                                                                                                                                                                                                                      .suggestion>span:not(.card-icon):not(.card-arrow){
+                                                                                                                                                                                                                                        font-size:10px}
+                                                                                                                                                                                                                                        .card-arrow{
+                                                                                                                                                                                                                                          display:none}
+                                                                                                                                                                                                                                          .composer-area{
+                                                                                                                                                                                                                                            padding:12px 20px 14px}
+                                                                                                                                                                                                                                            .composer-note{
+                                                                                                                                                                                                                                              font-size:9px}
+                                                                                                                                                                                                                                              .tip{
+                                                                                                                                                                                                                                                display:none}
+                                                                                                                                                                                                                                              }
+                                                                                                                                                                                                                                              @media(max-width:420px){
+                                                                                                                                                                                                                                                h1{
+                                                                                                                                                                                                                                                  font-size:35px;
+                                                                                                                                                                                                                                                  letter-spacing:-1.5px}
+                                                                                                                                                                                                                                                  .workspace-badge{
+                                                                                                                                                                                                                                                    display:none}
+                                                                                                                                                                                                                                                    .mobile-new{
+                                                                                                                                                                                                                                                      margin-left:auto}
+                                                                                                                                                                                                                                                      .greeting{
+                                                                                                                                                                                                                                                        font-size:8px;
+                                                                                                                                                                                                                                                        letter-spacing:1.4px}
+                                                                                                                                                                                                                                                        .welcome-description br{
+                                                                                                                                                                                                                                                          display:none}
+                                                                                                                                                                                                                                                          .suggestions{
+                                                                                                                                                                                                                                                            grid-template-columns:1fr}
+                                                                                                                                                                                                                                                            .suggestion{
+                                                                                                                                                                                                                                                              min-height:0;
+                                                                                                                                                                                                                                                              display:grid;
+                                                                                                                                                                                                                                                              grid-template-columns:32px 1fr;
+                                                                                                                                                                                                                                                              column-gap:12px;
+                                                                                                                                                                                                                                                              padding:12px}
+                                                                                                                                                                                                                                                              .card-icon{
+                                                                                                                                                                                                                                                                grid-row:span 2;
+                                                                                                                                                                                                                                                                margin:0}
+                                                                                                                                                                                                                                                                .suggestion strong{
+                                                                                                                                                                                                                                                                  align-self:end}
+                                                                                                                                                                                                                                                                  .suggestion>span:not(.card-icon):not(.card-arrow){
+                                                                                                                                                                                                                                                                    margin-top:0}
+                                                                                                                                                                                                                                                                    .welcome{
+                                                                                                                                                                                                                                                                      padding-top:20px}
+                                                                                                                                                                                                                                                                      .welcome-description{
+                                                                                                                                                                                                                                                                        margin:18px 0 22px}
+                                                                                                                                                                                                                                                                        .keyboard-hint{
+                                                                                                                                                                                                                                                                          display:none}
+                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                        @media(prefers-reduced-motion:reduce){
+                                                                                                                                                                                                                                                                          *,*::before,*::after{
+                                                                                                                                                                                                                                                                            animation:none!important;
+                                                                                                                                                                                                                                                                            transition:none!important;
+                                                                                                                                                                                                                                                                            scroll-behavior:auto!important}
+                                                                                                                                                                                                                                                                          }
